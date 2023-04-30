@@ -1,0 +1,12 @@
+createdb -U postgres test - создание БД
+
+psql -U postgres -d test - подключение к БД
+
+dropdb -U postgres test - удаление БД
+
+UPDATE track SET duration = 177 
+WHERE track_id = 14;
+
+Asdfg8585@
+
+GSvmdN0412e - paswd for Google account
