@@ -23,9 +23,18 @@ def index(request):
 
 def show_catalog(request):
     template = 'catalog.html'
+    sort = request.GET.get('sort')
     phones_objects = Phone.objects.all()
+    if sort == None:
+        phones = forming(phones_objects)
+    elif sort == 'name':
+        phones = sorted(forming(phones_objects), key=lambda phone: phone['name'])
+    elif sort == 'min_price':
+        phones = sorted(forming(phones_objects), key=lambda phone: phone['price'])
+    elif sort == 'max_price':
+        phones = sorted(forming(phones_objects), key=lambda phone: phone['price'], reverse=True)
     context = {
-        'phones': forming(phones_objects)
+        'phones': phones
     }
     return render(request, template, context)
 
